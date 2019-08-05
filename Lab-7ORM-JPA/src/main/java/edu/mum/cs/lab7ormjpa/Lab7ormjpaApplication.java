@@ -43,7 +43,7 @@ public class Lab7ormjpaApplication  implements CommandLineRunner {
         Transcript transcript= new Transcript("BS Computer Science");
         Transcript studentTranscript= saveTranscript(transcript);
 
-        ClassRoom classRoom=new ClassRoom("McLaughling Buiilding","M105");
+        ClassRoom classRoom=new ClassRoom("McLaughling Building","M105");
         ClassRoom studentClassRoom= saveClassRoom(classRoom);
         Student st = new Student("000-61-0001","Anna","Lynn","Smith",3.45F, LocalDate.of(2019,5,24));
         st.setTranscript(studentTranscript);

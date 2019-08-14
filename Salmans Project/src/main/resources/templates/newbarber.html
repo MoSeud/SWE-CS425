@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Kalu">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">-->
+    <title>Software Engineering Project</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a style="padding-right: 2em;" class="navbar-brand" href="/salmans/home">Software Engineering Projec</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                <a style="padding-right: 2em;" class="navbar-brand" href="/salmans/signup">SIGN UP</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <span style="color: #ffffff; margin-right: 0em;" th:text="${#temporals.format(now, 'EEEE, MMM dd, yyyy')}"></span>
+        </form>
+    </div>
+</nav>
+<div style="padding-top:1em;" class="container">
+    <div style="margin-bottom: 1em;">
+        <span style="font-size: 2em; color: #32a5e7;">New Customer Registration Form</span>
+    </div>
+
+    <form id="newBookForm" method="post" action="/salmans/signup" th:object="${barber}">
+        <fieldset>
+            <input type="hidden" name="userId" th:value="${barber.userId}"/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
+                              class="alert alert-danger"></span>
+                        <input id="fullName" name="fullName" type="text" class="form-control"
+                               th:value="${barber.fullName}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                          class="alert alert-danger"></span>
+                    <input id="email" name="email" type="email" class="form-control"
+                           th:value="${barber.email}">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                          class="alert alert-danger"></span>
+                    <input id="password" name="password" type="password" class="form-control"
+                           th:value="${barber.password}">
+                </div>
+            </div>
+<div style="float:right;">
+    <a href="/salmans/home" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Register</button>
+</div>
+</fieldset>
+</form>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">SALMANS :SWE Project</span>
+        <span style="float:right;" class="text-muted">&copy; August 2019</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
